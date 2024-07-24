@@ -1,4 +1,4 @@
-import { View, Text, Swiper, SwiperItem } from '@tarojs/components'
+import { View, Text, Swiper, SwiperItem, Progress, Form, Switch } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 
 export default function Blog() {
@@ -6,6 +6,14 @@ export default function Blog() {
   useLoad(() => {
     console.log('Page loaded.')
   })
+
+  const formSubmit = e => {
+    console.log(e)
+  }
+
+  const formReset = e => {
+    console.log(e)
+  }
 
   return (
     <View className='index'>
@@ -29,6 +37,19 @@ export default function Blog() {
           <View className="text">3</View>
         </SwiperItem>
       </Swiper>
+      <View className='components-page' style={{width: '30%'}}>
+        <Progress percent={20} showInfo strokeWidth={2} />
+        <Progress percent={40} strokeWidth={2} active showInfo />
+        <Progress percent={60}  strokeWidth={2} active showInfo />
+        <Progress percent={80}  strokeWidth={2} active activeColor='blue' showInfo />
+      </View>
+      <View>
+        <Form onSubmit={formSubmit} onReset={formReset} >
+          <View className='example-body'>
+            <Switch name='switch' className='form-switch' />
+          </View>
+        </Form>
+      </View>
     </View>
   )
 }
